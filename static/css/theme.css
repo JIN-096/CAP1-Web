@@ -1,0 +1,29 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+}
+
+h2, h3, h4, p ,a,li,button,address {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+}
+
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}

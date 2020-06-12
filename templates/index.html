@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+
+    <title>2020_CAP_TEAM8</title>
+
+    <!-- 부트스트랩 -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- link for google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/theme.css" rel="stylesheet">
+
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">2020 CAP TEAM 8</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="about.html">About</a></li>
+            <li><a href="members.html">Members</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome!</h1>
+        <p>This is a main page for our project. 
+        <br>In this page, you can run our pogram by following the instructions.<br>
+        <br>You can see the <mark><strong>detail of our project</strong></mark> by clicking the button below.</p>
+        
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-1">
+            <center>
+              <p>👇<a class="btn btn-primary btn" href="about.html" role="button">Learn more &raquo;</a></p>
+            </center>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="container">
+           <div class="row">
+        <div class="col-md-5">
+          <h1><center>Input your 🚗 image</center></h1>
+          <hr>
+          <form action="http://localhost:5000/" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <p class="help-block">1. Choose the image file.</p>
+              <img id="preview" src="/static/images/preview.jpg" width="500" alt="preview image" align="center" class="img-thumbnail center-block"><br><br>
+              <input type="file" id="getfile" name="file" accept="image/*">
+              <script> 
+                var file = document.querySelector('#getfile');
+
+                file.onchange = function () { 
+                    var fileList = file.files ;
+                    
+                    var reader = new FileReader();
+                    reader.readAsDataURL(fileList [0]);
+
+                    reader.onload = function  () {
+                        document.querySelector('#preview').src = reader.result;
+                    }; 
+                }; 
+              </script><br>
+              <p class="help-block">2. Submit the image file.</p>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Submit image</button>
+          </form>
+        </div> 
+        <div class="col-md-2">
+          <h1><center>➡</center></h1>        
+        </div>
+        <div class="col-md-5">
+          <h1><center>🔢 Result </center></h1>
+          <hr>
+          <h2>The car plate number is..</h2><br>
+          <div class="jumbotron well">
+              <h1>{{result}}</h1>
+          </div>
+        </div>
+      </div>
+    </div><br>
+
+    <hr><!--line & undertag-->
+    <div class="container">
+      <footer>
+        <p>&copy; KNU CSE 2020 CAP Team 8</p>
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript================================================== -->
+    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+    <script src="/static/js/bootstrap.min.js"></script>
+  </body>
+</html>
