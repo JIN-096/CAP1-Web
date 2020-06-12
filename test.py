@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 import pr
+import json
 
 app = Flask(__name__)
 
@@ -54,8 +55,18 @@ def about_Sr():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save('/Users/leejeongjin/Desktop/test/static/data/' + secure_filename(f.filename))
+        f.save('/Users/user/Desktop' + secure_filename(f.filename))
     return render_template('index.html', result=pr.text())
+
+
+@app.route('/process/image', methods=['POST'])
+def image_processing():
+    if request.method == 'POST':
+        f = request.files['file']
+        f.save('/Users/user/Desktop' + secure_filename(f.filename))
+        result = pr.text()
+        return json.dumps(result)
+
 
 
 if __name__ == '__main__':

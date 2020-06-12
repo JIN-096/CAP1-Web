@@ -16,6 +16,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/static/css/theme.css" rel="stylesheet">
+    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 
   </head>
 
@@ -66,7 +69,7 @@
         <div class="col-md-5">
           <h1><center>Input your 🚗 image</center></h1>
           <hr>
-          <form action="http://localhost:5000/" method="POST" enctype="multipart/form-data">
+          <form id="imageForm" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <p class="help-block">1. Choose the image file.</p>
               <img id="preview" src="/static/images/preview.jpg" width="500" alt="preview image" align="center" class="img-thumbnail center-block"><br><br>
@@ -87,7 +90,7 @@
               </script><br>
               <p class="help-block">2. Submit the image file.</p>
             </div>
-            <button type="submit" class="btn btn-success btn-lg btn-block">Submit image</button>
+            <button id = "submitBtn" type="submit" class="btn btn-success btn-lg btn-block">Submit image</button>
           </form>
         </div> 
         <div class="col-md-2">
@@ -98,7 +101,7 @@
           <hr>
           <h2>The car plate number is..</h2><br>
           <div class="jumbotron well">
-              <h1>{{result}}</h1>
+              <h1 id ="result"></h1>
           </div>
         </div>
       </div>
@@ -110,11 +113,47 @@
         <p>&copy; KNU CSE 2020 CAP Team 8</p>
       </footer>
     </div>
+  <script>
+    $("#submitBtn").click(function (event) {
 
+      //preventDefault 는 기본으로 정의된 이벤트를 작동하지 못하게 하는 메서드이다. submit을 막음
+      event.preventDefault();
+
+      // Get form
+      var form = $('#imageForm')[0];
+
+      // Create an FormData object
+      var data = new FormData(form);
+
+      // disabled the submit button
+
+      $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "/process/image",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+
+        timeout: 600000,
+        success: function (data) {
+            console.log(data)
+            var resultTag = document.getElementById("result")
+            resultTag.innerHTML = data
+            console.log("complete");
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+        }
+      });
+
+    });
+  </script>
     <!-- Bootstrap core JavaScript================================================== -->
-    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+
     <script src="/static/js/bootstrap.min.js"></script>
   </body>
 </html>
