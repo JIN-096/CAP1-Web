@@ -67,12 +67,30 @@
               aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40% Complete</div></div>
           </div>
         </div>
-          
       </div>
       <p>Before going through the SR step, we need to pre-process the image first.</p>
-      <br>
-      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well well-sm">
+            <h4>&nbsp;&nbsp;Development Enviroment</h4>
+            <ul>
+              <li>OpenCV</li>
+            </ul>
+          </div>
+        </div>     
+      </div>
 
+      <div class = "row">
+        <div class = "col-md-5">
+          <ul class="list-group">
+            <li class="list-group-item"><h4>1. Cropping</h4>Crop the car plate image from car image.</li>
+            <li class="list-group-item"><h4>2. Grayscaling</h4>Grayscale the colored image.</li>
+            <li class="list-group-item"><h4>3. Contour Detection</h4>Binarization and Detection of Contours.</li>
+            <li class="list-group-item"><h4>4. Coordinate extraction</h4>Extract the coordinates of biggest contour.</li>
+            <li class="list-group-item"><h4>5. Perspective Transform</h4>Perspective transform the coordinates to (350, 100) plane.</li>
+          </ul>
+        </div>
+      </div>
       <!--Super Resoiution------------------------------------------------------------------------------->
       <div class="page-header">
         <h1>Super-Resolution</h1>
@@ -84,7 +102,21 @@
           </div>
         </div>
       </div>
-      <p>Super resolution is...</p>
+      <p>Enhance the quality(Resolution) of images.</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well well-sm">
+            <h4>&nbsp;&nbsp;Development Enviroment</h4>
+            <ul>
+              <li>SRGAN</li>
+            </ul>
+          </div>
+        </div> 
+      </div>
+
+      <h3>SR Result</h3><br>
+      <img src="/static/images/sr_1.JPG" width=600 alt="sr1"><br>
+      <img src="/static/images/sr_2.JPG" width=600 alt="sr2">
 
       
   </div>
