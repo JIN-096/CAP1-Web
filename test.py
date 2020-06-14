@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 import pr
 import json
+from ALPRwithSuperResolution_master import projectcode
 
 app = Flask(__name__)
 
@@ -55,7 +56,7 @@ def about_Sr():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save('/Users/user/Desktop' + secure_filename(f.filename))
+        f.save('/Users/leejeongjin/Desktop/test/ALPRwithSuperResolution_master/data/dataset' + secure_filename(f.filename))
     return render_template('index.html', result=pr.text())
 
 
@@ -63,10 +64,9 @@ def upload_file():
 def image_processing():
     if request.method == 'POST':
         f = request.files['file']
-        f.save('/Users/user/Desktop' + secure_filename(f.filename))
-        result = pr.text()
+        f.save('/Users/leejeongjin/Desktop/test/ALPRwithSuperResolution_master/data/dataset' + secure_filename(f.filename))
+        result = projectcode.text()
         return json.dumps(result)
-
 
 
 if __name__ == '__main__':
