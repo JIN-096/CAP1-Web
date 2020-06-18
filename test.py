@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
-import pr
 import json
+from flask_bootstrap import Bootstrap
 from ALPRwithSuperResolution_master import projectcode
+import pr
 
 app = Flask(__name__)
 
@@ -30,6 +31,8 @@ def member_company():
 @app.route('/members_professor.html')
 def member_professor():
     return render_template("members_professor.html")
+
+
 
 
 @app.route('/about.html')
@@ -64,8 +67,10 @@ def upload_file():
 def image_processing():
     if request.method == 'POST':
         f = request.files['file']
-        f.save('/Users/leejeongjin/Desktop/test/ALPRwithSuperResolution_master/data/dataset' + secure_filename(f.filename))
-        result = projectcode.text()
+        f.save('/Users/leejeongjin/Desktop/test/'
+               'ALPRwithSuperResolution_master/data/dataset/' + secure_filename(f.filename)) # 받아오는 파일 저장하는 위
+        #result = f.filename.split(".")[0]
+        result = projectcode.text() # ocr된 값을 불러옴.
         return json.dumps(result)
 
 

@@ -115,18 +115,13 @@
     </div>
   <script>
     $("#submitBtn").click(function (event) {
-
       //preventDefault 는 기본으로 정의된 이벤트를 작동하지 못하게 하는 메서드이다. submit을 막음
       event.preventDefault();
-
       // Get form
       var form = $('#imageForm')[0];
-
       // Create an FormData object
       var data = new FormData(form);
-
       // disabled the submit button
-
       $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -147,7 +142,6 @@
             console.log("ERROR : ", e);
         }
       });
-
     });
   </script>
     <!-- Bootstrap core JavaScript================================================== -->
